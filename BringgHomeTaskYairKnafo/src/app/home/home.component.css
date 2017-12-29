@@ -1,0 +1,37 @@
+.wrapper{
+    margin: 3%;
+}
+
+.userBox{
+    border: black;
+    font-family: cursive;
+    border-style: ridge;
+    list-style-type:none;
+    padding: 25px;
+
+}
+
+.halfPage{
+    width: 30%;
+    margin-left: 10%;
+    float: left;
+    height: 90vh;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+
+
+.halfPage2{
+    margin-right: 10%;
+    float: right;
+}
+
+.removeBtn{
+    float: right;
+    
+}
+
+agm-map{
+    height: 90vh;
+    width: 90vh;
+}
