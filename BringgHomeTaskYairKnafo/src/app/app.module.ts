@@ -7,13 +7,16 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+import { AddUserBringgComponent } from './add-user-bringg/add-user-bringg.component';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    AddUserBringgComponent,
   ],
   imports: [
     BrowserModule,

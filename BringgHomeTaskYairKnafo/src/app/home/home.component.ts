@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { UserModule } from '../user/user.module';
+import {AddUserBringgComponent} from '../add-user-bringg/add-user-bringg.component';
 import { JsonConvert, OperationMode, ValueCheckingMode } from 'json2typescript';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AgmCoreModule, LatLngBoundsLiteral } from '@agm/core';
-
 
 @Component({
   selector: 'app-home',
@@ -15,11 +14,10 @@ import { AgmCoreModule, LatLngBoundsLiteral } from '@agm/core';
 
 export class HomeComponent implements OnInit {
 
-  constructor(private dataService: DataService, private fb: FormBuilder) { }
+  constructor(private dataService: DataService) { }
 
   bringgUsers: Array<UserModule> = [];
   addingUser: boolean;
-  rForm: FormGroup;
   userFocus: UserModule;
   zoom: number;
   bounds: LatLngBoundsLiteral;
@@ -27,7 +25,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.userFocus = new UserModule();
     this.initUsers();
-    this.initForm();
   }
 
   private convertJsonToUserArray(jsonString: string): void {
@@ -37,19 +34,6 @@ export class HomeComponent implements OnInit {
     } catch (e) {
       console.log(e);
     }
-
-  }
-
-  private initForm(): void {
-    this.rForm = this.fb.group({
-      'id': [null, Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(23)])],
-      'name': [null, Validators.required],
-      'age': [null, Validators.required],
-      'email': [null, Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
-      'latitude': [null, Validators.compose([Validators.required, Validators.minLength(-90.000001), Validators.maxLength(90)])],
-      'longitude': [null, Validators.compose([Validators.required, Validators.minLength(-180.000001), Validators.maxLength(180)])],
-      'isActive': ''
-    });
 
   }
 
@@ -72,7 +56,6 @@ export class HomeComponent implements OnInit {
   }
 
   public sortByAge(): void {
-
     this.bringgUsers.sort((a, b) => {
       return a.age < b.age ? -1 : 1;
     });
@@ -89,7 +72,6 @@ export class HomeComponent implements OnInit {
 
   private addUserToList(user: UserModule): void {
     this.bringgUsers.push(user);
-    this.rForm.reset();
     this.sortByAge();
   }
 

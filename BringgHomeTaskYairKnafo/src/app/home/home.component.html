@@ -5,7 +5,8 @@
     <button (click)="sortByAge()">sort By Age</button>
     <button (click)="sortByName()">sort By Name</button>
     <div *ngIf="addingUser">
-      <form [formGroup]="rForm" (ngSubmit)="addUserToList(rForm.value)">
+      <app-add-user-bringg (notify)='addUserToList($event)'></app-add-user-bringg>
+      <!-- <form [formGroup]="rForm" (ngSubmit)="addUserToList(rForm.value)">
         <div class="form-container">
           <div class="row columns">
             <h3>Add User Form</h3>
@@ -45,7 +46,7 @@
             <input type="submit" class="button expanded" value="Submit Form" [disabled]="!rForm.valid">
           </div>
         </div>
-      </form>
+      </form> -->
     </div>
     <li class="userBox" *ngFor="let u of bringgUsers ;let i = index " (click)="foucesMapOnUser(i) ">
       <img src={{u.picture}}> {{ u.name }}

@@ -1,0 +1,41 @@
+<form [formGroup]="rForm" (ngSubmit)="addUser(rForm.value)">
+    <div class="form-container">
+      <div class="row columns">
+        <h3>Add User Form</h3>
+        <p>
+          <label>User Id
+            <input type="text" formControlName="id">
+          </label>
+        </p>
+        <p>
+          <label>User Age
+            <input type="number" formControlName="age">
+          </label>
+        </p>
+        <p>
+          <label>User Name
+            <input type="text" formControlName="name">
+          </label>
+        </p>
+        <p>
+          <label>User Email
+            <input type="email" formControlName="email">
+          </label>
+        </p>
+        <p>
+          <label>Latitude
+            <input type="number" formControlName="latitude">
+          </label>
+        </p>
+        <p>
+          <label>Longitude
+            <input type="number" formControlName="longitude">
+          </label>
+        </p>
+        <p>
+          <input type="checkbox" name="isActive" formControlName="isActive" value="1"> Is Active
+        </p>
+        <input type="submit" class="button expanded" value="Submit Form" [disabled]="!rForm.valid">
+      </div>
+    </div>
+  </form>
